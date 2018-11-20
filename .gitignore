@@ -1,0 +1,14 @@
+.DS_Store
+.mvn
+target
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sql
+*.jks
+*.cert

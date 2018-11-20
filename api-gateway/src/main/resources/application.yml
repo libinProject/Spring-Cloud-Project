@@ -1,0 +1,10 @@
+server:
+  port: 8039
+zuul:
+  routes:
+    api-user:
+      path: /api-user/**
+      serviceId: user-service
+spring:
+  application:
+    name: api-gateway

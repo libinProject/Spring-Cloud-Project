@@ -1,0 +1,49 @@
+server:
+  port: 8050
+spring:
+  application:
+    name: resource-service
+  datasource:
+    # 39.106.197.219
+    url: jdbc:mysql://localhost:3306/zuul-auth?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: root
+    # password: LiBin@2018
+    password: mis
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 10
+      max-active: 100
+      min-idle: 5
+      max-wait: 60000
+      validation-query: select 1
+      test-on-borrow: true
+      test-while-idle: true
+      web-stat-filter:
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      stat-view-servlet:
+        login-username: druid
+        login-password: druid
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+mapper:
+  identity: MYSQL
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+security:
+  oauth2:
+    resource:
+      id: resource-service
+      jwt:
+        key-uri: http://localhost:8040/oauth/token_key
+    client:
+      client-id: webApp
+      client-secret: webApp
+      access-token-uri: http://localhost:8040/oauth/token
+      grant-type: password
+      scope: server
+      user-authorization-uri: http://localhost:8040/oauth/authorize
